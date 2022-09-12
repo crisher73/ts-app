@@ -25,5 +25,9 @@ products.push({
     stock: 12,
 });
 
+const addProduct = (data: Product) => {
+    products.push(data);
+}
+
 
     
