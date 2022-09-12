@@ -35,12 +35,13 @@ export const checkRoleV2 = (roles: string[]) => {
 const rta3 = checkRoleV2([ROLES.ADMIN, ROLES.SELLER]);
 console.log('checkRoleV2',rta3);
          
-// PARAMNETER REST: no necesito ingresar los parametros dentro de un array, sino que al utilizar ...reols:string[], se va a leer como si fueran array. 
+// PARAMETER REST: no necesito ingresar los parametros dentro de un array, sino que al utilizar ...reols:string[], se va a leer como si fueran array. 
+
 export const checkRoleV3 = (...roles: string[]) => {
     if (roles.includes(currentUser.role)){
         return true;
     }
     return false;
 }
-const rta4 = checkRoleV2(ROLES.ADMIN, ROLES.SELLER, ROLES.CUSTOMER);
+const rta4 = checkRoleV3(ROLES.ADMIN, ROLES.SELLER, ROLES.CUSTOMER);
 console.log('checkRoleV3',rta4);
