@@ -9,3 +9,7 @@ export interface CreateProductDto extends Omit<Product, 'id' | 'createdAt' | 'up
   export interface UpdateProductDto extends Partial<CreateProductDto> {}
 
   type example2 = Required<Product>;
+
+  export interface FindProductDto extends Readonly<Partial<Product>> {}
+
+  type example3 = Readonly<Product>;

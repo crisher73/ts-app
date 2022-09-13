@@ -1,7 +1,7 @@
 import {faker} from '@faker-js/faker';
 
 import {Product} from './product.model';
-import {CreateProductDto, UpdateProductDto} from './product.dto';
+import {CreateProductDto, UpdateProductDto, FindProductDto} from './product.dto';
 
 export const products : Product[] = [];
 
@@ -30,6 +30,13 @@ export const updateProduct = (id: string, changes: UpdateProductDto): Product =>
       ...changes
     }
     return products[index];
+}
+
+export const findProducts = (dto:FindProductDto): Product[] => {
+  // code
+  // dto.color = 'blue';  // no los deja modificar porque previamente le indiqué que solo se pueden leer (readonly).
+  // dto.isNew = true;
+  return products;
 }
 
 
