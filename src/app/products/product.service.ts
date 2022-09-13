@@ -1,29 +1,34 @@
+import {faker} from '@faker-js/faker';
+
 import {Product} from './product.model';
+import {CreateProductDto} from './product.dto';
 
 export const products : Product[] = [];
 
-export const addProduct = (data: Product) => {
-    products.push(data);
-}
-
-export const updateProduct = (id: string, changes:Product) => {
-    const index: number = getIndex(id)
-    const product: Product = products[index]
-   index === -1 && throwError('Product not Found')
-  
-    products[index] = {
-      ...product,
-      ...changes
+export const addProduct = (data: CreateProductDto): Product => {
+    const newProduct = {
+      ...data,
+      id:faker.datatype.uuid(),
+      createdAt:faker.date.recent(),
+      updatedAt:faker.date.recent(),
+      category: {
+        id: data.categoryId,
+        name: faker.commerce.department(),
+        createdAt:faker.date.recent(),
+        updatedAt:faker.date.recent(),
+      }
     }
-    return products[index]
+    products.push(newProduct);
+    return newProduct;
 }
 
-const getIndex = (id: string) => products.findIndex(product => product.id === id)
-const throwError = (error: string) => new Error(error)
-
-export const findProduct = (id:string) => {
-    const index: number = getIndex(id)
-    index === -1 && throwError('Product not Found')
-    return products[index]
+export const updateProduct = (id: string, changes: Product) => {
+    //code
+}
+export const deleteProduct = (id: string): void => {
+    //code
   }
-
+  
+export const getProduct = (id: string): void => {
+    //code
+  }
